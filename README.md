@@ -1,0 +1,2 @@
+# ProjetoPensamentoComputacional
+Entrega de atividades
