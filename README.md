@@ -13,10 +13,13 @@ Ao decorrer do filme outros personagens aparecem e se juntam a Alex, o trio usa 
 Alguns dos problemas apresentados no filme são a fragilidade dos bancos, atualmente poderiam usar a IA como o uma diferente abordagem tecnológica, mantendo como detector de possíveis fraudes.
 Impactos sérios foram mostrados ao decorrer do filme, como mortes e perseguições. Através de suas escolhas o melhor amigo de Alex teve sua vida ceifada. Isso reflete na ética da programação, talvez se eles tivessem escolhido boas práticas na programação e tivessem levado uma vida correta não teriam mortes e prisões.
 
+------------------------------------------------------------------------------------------------------------------------------------------
+
                                    Resolução de Problemas com Linguagem de Programação
                                    
 Alessandro, o Estudante de Programação
 Alessandro está aprendendo sobre segurança digital e percebeu que sempre usava senhas fracas para acessar suas contas em sites de cursos e ferramentas online. Um dia, ele recebeu um alerta de que uma de suas senhas vazou em uma violação de dados. Para evitar problemas futuros, ele começou a usar um gerador de senhas seguras, criando combinações fortes e diferentes para cada conta, que ele salva em um gerenciador de senhas. Isso lhe deu mais tranquilidade e proteção contra ataques.
+
 
 *Possivel solução aplicavel:*
 
@@ -28,16 +31,16 @@ def gerar_senha(comprimento=12, incluir_maiusculas=True, incluir_numeros=True, i
     """Gerador de senhas"""
     caracteres = string.ascii_lowercase 
     
-    if incluir_maiusculas:
+   if incluir_maiusculas:
         caracteres += string.ascii_uppercase 
     if incluir_numeros:
         caracteres += string.digits  
     if incluir_simbolos:
         caracteres += string.punctuation  
 
-    senha = ''.join(random.choice(caracteres) for _ in range(comprimento))
+   senha = ''.join(random.choice(caracteres) for _ in range(comprimento))
     
-    return senha
+   return senha
 
 
 print("Gerador de Senhas Seguras ")
@@ -59,6 +62,9 @@ print(f"\n Senha Gerada: {senha_segura}")
 *Esssa solução gera senhas seguras*
 
 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 *Indicação de Problemas para Resolução e Pontuação*
 
@@ -77,7 +83,7 @@ while tentativas > 0:
     usuario = input("Digite o usuário: ")
     senha = input("Digite a senha: ")
 
-    if usuario in usuarios and usuarios[usuario] == senha:
+   if usuario in usuarios and usuarios[usuario] == senha:
         print("Login bem-sucedido! Bem-vindo,", usuario)
         break
     else:
@@ -89,6 +95,7 @@ if tentativas == 0:
 
 Esse codigo simula um sistema de login.
 
+------------------------------------------------------------------------------------------------------------------------------------------
 
 *Criar uma solução para identificar ataques a uma rede fictícia.*
 
@@ -110,25 +117,26 @@ print("Monitorando tráfego de rede...\n")
 
 while True:
     
-    ip_origem = random.choice(ips_monitorados)
+   ip_origem = random.choice(ips_monitorados)
     
    
-    tentativas_por_ip[ip_origem] = tentativas_por_ip.get(ip_origem, 0) + 1
+   tentativas_por_ip[ip_origem] = tentativas_por_ip.get(ip_origem, 0) + 1
     
-    print(f"Tentativa de acesso do IP {ip_origem} - Total: {tentativas_por_ip[ip_origem]}")
+   print(f"Tentativa de acesso do IP {ip_origem} - Total: {tentativas_por_ip[ip_origem]}")
     
     
-    if tentativas_por_ip[ip_origem] > limite_tentativas:
+   if tentativas_por_ip[ip_origem] > limite_tentativas:
         print(f" *ALERTA*: Atividade suspeita detectada do IP {ip_origem}. Possível ataque em andamento!")
         print("Encerrando o monitoramento...\n")
         break  
     
    
-    time.sleep(1)
+   time.sleep(1)
 
 
  Esse sistema simula ataques de ip e gera um alerta.
-
+ 
+------------------------------------------------------------------------------------------------------------------------------------------
 
  ALUNOS: Jonathan Alves de Menezes, Alessandro Rodrigues Justino Junior, Kleber Galvão.
 
