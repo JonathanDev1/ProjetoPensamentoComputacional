@@ -24,34 +24,36 @@ Alessandro está aprendendo sobre segurança digital e percebeu que sempre usava
 *Possivel solução aplicavel:*
 
     import random
-    import string
-    def gerar_senha(comprimento=12, incluir_maiusculas=True, incluir_numeros=True, incluir_simbolos=True):
-    """Gerador de senhas"""
-    caracteres = string.ascii_lowercase 
-   
-    if incluir_maiusculas:
-        caracteres += string.ascii_uppercase 
-    if incluir_numeros:
-        caracteres += string.digits  
-    if incluir_simbolos:
-        caracteres += string.punctuation  
+import string
 
-    senha = ''.join(random.choice(caracteres) for _ in range(comprimento))
+def gerar_senha(tamanho=12, maiusculas=True, numeros=True, simbolos=True):
+    """Gera uma senha segura com base nas opções do usuário."""
+    caracteres = string.ascii_lowercase  # Inclui letras minúsculas
     
-    return senha
-    print("Gerador de Senhas Seguras ")
-    tamanho = int(input("Digite o tamanho da senha (mínimo 8 caracteres): "))
-    if tamanho < 8:
-    print("Tamanho muito pequeno! Ajustado para 8 caracteres.")
-    tamanho = 8
+    # Adiciona mais complexidade à senha conforme as escolhas do usuário
+    if maiusculas:
+        caracteres += string.ascii_uppercase  # Adiciona letras maiúsculas
+    if numeros:
+        caracteres += string.digits  # Adiciona números
+    if simbolos:
+        caracteres += string.punctuation  # Adiciona símbolos especiais
+    
+    # Gera a senha escolhendo caracteres aleatórios da lista
+    return ''.join(random.choice(caracteres) for _ in range(tamanho))
 
-    maiusculas = input("Incluir letras maiúsculas? (S/N): ").strip().lower() == 's'
-    numeros = input("Incluir números? (S/N): ").strip().lower() == 's'
-    simbolos = input("Incluir símbolos? (S/N): ").strip().lower() == 's'
+    # 📌 Lucas agora interage com o programa:
+print("🔐 Gerador de Senhas Seguras")
 
-    senha_segura = gerar_senha(tamanho, maiusculas, numeros, simbolos)
+# Pede o tamanho da senha e garante um mínimo de 8 caracteres
+tamanho = max(int(input("Tamanho da senha (mínimo 8): ")), 8)
 
-    print(f"\n Senha Gerada: {senha_segura}")
+# Pergunta se o usuário deseja incluir certos tipos de caracteres
+maiusculas = input("Incluir letras maiúsculas? (S/N): ").strip().lower() == 's'
+numeros = input("Incluir números? (S/N): ").strip().lower() == 's'
+simbolos = input("Incluir símbolos? (S/N): ").strip().lower() == 's'
+
+# Gera e exibe a senha segura
+print(f"\n🔑 Senha Gerada: {gerar_senha(tamanho, maiusculas, numeros, simbolos)}")
                                    
 *Esssa solução gera senhas seguras*
 
@@ -64,28 +66,35 @@ Alessandro está aprendendo sobre segurança digital e percebeu que sempre usava
 
 *Desenvolver um programa que simula um sistema de login*
 
+Clara é dona de um pequeno e-commerce. Cansada de senhas fracas e inseguras, ela decidiu implementar um sistema de login para garantir que apenas usuários autorizados acessem seu sistema.
+Após pesquisar um pouco, Clara criou este código simples e eficiente para controlar acessos.
+
 Codigo:
 
-    usuarios = {
-    "admin": "senha123",
-    "usuario1": "segura456"
-    }
+    # Dicionário contendo usuários e senhas
+usuarios = {"admin": "senha123", "usuario1": "segura456"}
 
-    tentativas = 3  
+# Número máximo de tentativas antes de bloquear o login
+tentativas = 3  
 
-    while tentativas > 0:
+while tentativas > 0:
+    # Solicita nome de usuário e senha
     usuario = input("Digite o usuário: ")
     senha = input("Digite a senha: ")
 
-    if usuario in usuarios and usuarios[usuario] == senha:
-        print("Login bem-sucedido! Bem-vindo,", usuario)
-        break
-    else:
-        tentativas -= 1
-        print(f"Usuário ou senha incorretos. Tentativas restantes: {tentativas}")
+    # Verifica se as credenciais estão corretas
+    if usuarios.get(usuario) == senha:
+        print(f"Login bem-sucedido! Bem-vindo, {usuario}")
+        break  # Sai do loop após login bem-sucedido
+    
+    # Se as credenciais estiverem erradas, reduz uma tentativa
+    tentativas -= 1
+    print(f"Usuário ou senha incorretos. Tentativas restantes: {tentativas}")
 
-    if tentativas == 0:
+# Se todas as tentativas forem usadas, a conta é bloqueada
+if tentativas == 0:
     print("Conta bloqueada devido a muitas tentativas erradas.")
+
 
 Esse codigo simula um sistema de login.
 
@@ -93,32 +102,40 @@ Esse codigo simula um sistema de login.
 
 *Criar uma solução para identificar ataques a uma rede fictícia.*
 
+Ricardo é responsável pela segurança da rede de uma pequena empresa. Ele percebeu que alguns IPs estavam tentando acessos suspeitos repetidamente e decidiu criar um sistema simples para detectar possíveis ataques e bloquear acessos indevidos automaticamente.
+Após pesquisar sobre monitoramento de rede, Ricardo criou este código eficiente.
+
 Codigo:
 
-    import random
-    import time
+   import random
+import time
 
-    ips_monitorados = ["192.168.1.10", "192.168.1.15", "192.168.1.20", "200.150.10.5"]
+# Lista de IPs monitorados
+ips = ["192.168.1.10", "192.168.1.15", "192.168.1.20", "200.150.10.5"]
 
-    tentativas_por_ip = {}
-    limite_tentativas = 5
+# Dicionário para contar tentativas por IP
+tentativas = {}
 
-    print("Monitorando tráfego de rede...\n")
+# Limite de tentativas antes de gerar alerta
+limite = 5
 
-    while True:
+print("Monitorando tráfego de rede...\n")
+
+while True:
+    # Escolhe um IP aleatoriamente para simular um acesso
+    ip = random.choice(ips)
     
-    ip_origem = random.choice(ips_monitorados)
-    tentativas_por_ip[ip_origem] = tentativas_por_ip.get(ip_origem, 0) + 1
+    # Registra a tentativa no dicionário, iniciando com 0 se o IP for novo
+    tentativas[ip] = tentativas.get(ip, 0) + 1
     
-    print(f"Tentativa de acesso do IP {ip_origem} - Total: {tentativas_por_ip[ip_origem]}")
-     
-    if tentativas_por_ip[ip_origem] > limite_tentativas:
-        print(f" *ALERTA*: Atividade suspeita detectada do IP {ip_origem}. Possível ataque em andamento!")
-        print("Encerrando o monitoramento...\n")
-        break  
+    print(f"Tentativa de acesso do IP {ip} - Total: {tentativas[ip]}")
     
-    time.sleep(1)
-
+    # Se o IP ultrapassar o limite, alerta e encerra o monitoramento
+    if tentativas[ip] > limite:
+        print(f"ALERTA: Atividade suspeita detectada do IP {ip}. Encerrando o monitoramento.")
+        break  # Sai do loop imediatamente
+    
+    time.sleep(1)  # Aguarda 1 segundo para simular o tempo real
 
  Esse sistema simula ataques de ip e gera um alerta.
  
