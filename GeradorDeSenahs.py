@@ -1,38 +1,31 @@
 import random
 import string
 
-
-def gerar_senha(comprimento=12, incluir_maiusculas=True, incluir_numeros=True, incluir_simbolos=True):
-    """Gerador de senhas"""
-    caracteres = string.ascii_lowercase 
+def gerar_senha(tamanho=12, maiusculas=True, numeros=True, simbolos=True):
+    """Gera uma senha segura com base nas opções do usuário."""
+    caracteres = string.ascii_lowercase  # Inclui letras minúsculas
     
-    if incluir_maiusculas:
-        caracteres += string.ascii_uppercase 
-    if incluir_numeros:
-        caracteres += string.digits  
-    if incluir_simbolos:
-        caracteres += string.punctuation  
-
-    senha = ''.join(random.choice(caracteres) for _ in range(comprimento))
+    # Adiciona mais complexidade à senha conforme as escolhas do usuário
+    if maiusculas:
+        caracteres += string.ascii_uppercase  # Adiciona letras maiúsculas
+    if numeros:
+        caracteres += string.digits  # Adiciona números
+    if simbolos:
+        caracteres += string.punctuation  # Adiciona símbolos especiais
     
-    return senha
+    # Gera a senha escolhendo caracteres aleatórios da lista
+    return ''.join(random.choice(caracteres) for _ in range(tamanho))
 
+# 📌 Lucas agora interage com o programa:
+print("🔐 Gerador de Senhas Seguras")
 
-print("Gerador de Senhas Seguras ")
-tamanho = int(input("Digite o tamanho da senha (mínimo 8 caracteres): "))
-if tamanho < 8:
-    print("Tamanho muito pequeno! Ajustado para 8 caracteres.")
-    tamanho = 8
+# Pede o tamanho da senha e garante um mínimo de 8 caracteres
+tamanho = max(int(input("Tamanho da senha (mínimo 8): ")), 8)
 
+# Pergunta se o usuário deseja incluir certos tipos de caracteres
 maiusculas = input("Incluir letras maiúsculas? (S/N): ").strip().lower() == 's'
 numeros = input("Incluir números? (S/N): ").strip().lower() == 's'
 simbolos = input("Incluir símbolos? (S/N): ").strip().lower() == 's'
 
-
-senha_segura = gerar_senha(tamanho, maiusculas, numeros, simbolos)
-
-
-print(f"\n Senha Gerada: {senha_segura}")
-
-
-
+# Gera e exibe a senha segura
+print(f"\n🔑 Senha Gerada: {gerar_senha(tamanho, maiusculas, numeros, simbolos)}")
