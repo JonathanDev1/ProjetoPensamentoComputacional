@@ -1,19 +1,29 @@
 import random
 import time
 
+# Lista de IPs monitorados
+ips = ["192.168.1.10", "192.168.1.15", "192.168.1.20", "200.150.10.5"]
 
-ips_monitorados = ["192.168.1.10", "192.168.1.15", "192.168.1.20", "200.150.10.5"]
-tentativas_por_ip = {}
-limite_tentativas = 5
+# Dicionário para contar tentativas por IP
+tentativas = {}
+
+# Limite de tentativas antes de gerar alerta
+limite = 5
 
 print("Monitorando tráfego de rede...\n")
 
 while True:
-    ip_origem = random.choice(ips_monitorados)
-    tentativas_por_ip[ip_origem] = tentativas_por_ip.get(ip_origem, 0) + 1
-    print(f"Tentativa de acesso do IP {ip_origem} - Total: {tentativas_por_ip[ip_origem]}")
-    if tentativas_por_ip[ip_origem] > limite_tentativas:
-        print(f" ALERTA: Atividade suspeita detectada do IP {ip_origem}. Possível ataque em andamento!")
-        print("Encerrando o monitoramento...\n")
-        break  
-    time.sleep(1)
+    # Escolhe um IP aleatoriamente para simular um acesso
+    ip = random.choice(ips)
+    
+    # Registra a tentativa no dicionário, iniciando com 0 se o IP for novo
+    tentativas[ip] = tentativas.get(ip, 0) + 1
+    
+    print(f"Tentativa de acesso do IP {ip} - Total: {tentativas[ip]}")
+    
+    # Se o IP ultrapassar o limite, alerta e encerra o monitoramento
+    if tentativas[ip] > limite:
+        print(f"ALERTA: Atividade suspeita detectada do IP {ip}. Encerrando o monitoramento.")
+        break  # Sai do loop imediatamente
+    
+    time.sleep(1)  # Aguarda 1 segundo para simular o tempo real
