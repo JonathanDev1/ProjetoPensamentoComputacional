@@ -13,7 +13,7 @@ while True:
     tentativas_por_ip[ip_origem] = tentativas_por_ip.get(ip_origem, 0) + 1
     print(f"Tentativa de acesso do IP {ip_origem} - Total: {tentativas_por_ip[ip_origem]}")
     if tentativas_por_ip[ip_origem] > limite_tentativas:
-        print(f"🚨 ALERTA: Atividade suspeita detectada do IP {ip_origem}. Possível ataque em andamento!")
+        print(f" ALERTA: Atividade suspeita detectada do IP {ip_origem}. Possível ataque em andamento!")
         print("Encerrando o monitoramento...\n")
         break  
     time.sleep(1)
