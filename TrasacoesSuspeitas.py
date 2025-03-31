@@ -3,7 +3,7 @@ import string
 
 
 def gerar_senha(comprimento=12, incluir_maiusculas=True, incluir_numeros=True, incluir_simbolos=True):
-    """Gera uma senha segura com base nas opções do usuário."""
+    """Gerador de senhas"""
     caracteres = string.ascii_lowercase 
     
     if incluir_maiusculas:
