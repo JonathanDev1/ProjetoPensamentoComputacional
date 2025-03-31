@@ -94,5 +94,50 @@ Esse codigo simula um sistema de login.
 
 Codigo:
 
+import random
+import time
 
+
+ips_monitorados = ["192.168.1.10", "192.168.1.15", "192.168.1.20", "200.150.10.5"]
+
+
+tentativas_por_ip = {}
+
+
+limite_tentativas = 5
+
+print("Monitorando tráfego de rede...\n")
+
+while True:
+    
+    ip_origem = random.choice(ips_monitorados)
+    
+   
+    tentativas_por_ip[ip_origem] = tentativas_por_ip.get(ip_origem, 0) + 1
+    
+    print(f"Tentativa de acesso do IP {ip_origem} - Total: {tentativas_por_ip[ip_origem]}")
+    
+    
+    if tentativas_por_ip[ip_origem] > limite_tentativas:
+        print(f" *ALERTA*: Atividade suspeita detectada do IP {ip_origem}. Possível ataque em andamento!")
+        print("Encerrando o monitoramento...\n")
+        break  
+    
+   
+    time.sleep(1)
+
+
+ Esse sistema simula ataques de ip e gera um alerta.
+
+
+ ALUNOS: Jonathan Alves de Menezes, Alessandro Rodrigues Justino Junior, Kleber Galvão.
+
+
+ *Menções:*
+
+
+ Hacker: Todo Crime Tem um Início. Direção de Michael Spierig e Peter Spierig. Produção: Germany, Estados Unidos, 2015. 1h 58min.
+ OPENAI. ChatGPT. Utilizado para auxílio na correção de códigos. Acesso em: 21 mar. 2025. Disponível em: https://chat.openai.com/
+
+ _
 
