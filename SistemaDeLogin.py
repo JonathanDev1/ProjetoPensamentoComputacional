@@ -1,15 +1,15 @@
-# Dicionário contendo usuários e senhas
+# parâmetro contendo usuários e senhas
 usuarios = {"admin": "senha123", "usuario1": "segura456"}
 
 # Número máximo de tentativas antes de bloquear o login
 tentativas = 3  
 
 while tentativas > 0:
-    # Solicita nome de usuário e senha
+    # Solicita nome de usuário e senha e recebe eles como input.
     usuario = input("Digite o usuário: ")
     senha = input("Digite a senha: ")
 
-    # Verifica se as credenciais estão corretas
+    # Verifica se as credenciais estão corretas usando comparação
     if usuarios.get(usuario) == senha:
         print(f"Login bem-sucedido! Bem-vindo, {usuario}")
         break  # Sai do loop após login bem-sucedido
@@ -18,6 +18,6 @@ while tentativas > 0:
     tentativas -= 1
     print(f"Usuário ou senha incorretos. Tentativas restantes: {tentativas}")
 
-# Se todas as tentativas forem usadas, a conta é bloqueada
+# Se todas as tentativas forem executadas com falha, a conta é bloqueada.
 if tentativas == 0:
     print("Conta bloqueada devido a muitas tentativas erradas.")
