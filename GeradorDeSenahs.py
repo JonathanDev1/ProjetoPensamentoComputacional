@@ -17,8 +17,8 @@ def gerar_senha(tamanho=12, maiusculas=True, numeros=True, simbolos=True):
     # Gera a senha escolhendo caracteres aleatórios da lista
     return ''.join(random.choice(caracteres) for _ in range(tamanho))
 
-# 📌 Lucas agora interage com o programa:
-print("🔐 Gerador de Senhas Seguras")
+#  Lucas agora interage com o programa:
+print(" Gerador de Senhas Seguras")
 
 # Pede o tamanho da senha e garante um mínimo de 8 caracteres
 tamanho = max(int(input("Tamanho da senha (mínimo 8): ")), 8)
