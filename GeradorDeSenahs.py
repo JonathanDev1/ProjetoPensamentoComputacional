@@ -29,4 +29,4 @@ numeros = input("Incluir números? (S/N): ").strip().lower() == 's'
 simbolos = input("Incluir símbolos? (S/N): ").strip().lower() == 's'
 
 # Gera e exibe a senha segura no onsole de execução
-print(f"\n🔑 Senha Gerada: {gerar_senha(tamanho, maiusculas, numeros, simbolos)}")
+print(f"\n Senha Gerada: {gerar_senha(tamanho, maiusculas, numeros, simbolos)}")
